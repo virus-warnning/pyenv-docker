@@ -1,0 +1,27 @@
+FROM alpine:3.12
+
+RUN echo http://alpine.cs.nctu.edu.tw/v3.12/main > /etc/apk/repositories
+RUN echo http://alpine.cs.nctu.edu.tw/v3.12/community >> /etc/apk/repositories
+RUN apk update
+
+RUN apk add \
+    mandoc man-pages less less-doc \
+    bash bash-doc bash-completion \
+    curl curl-doc \
+    git git-doc \
+    build-base gcc-doc \
+    patch \
+    zlib-dev \
+    libffi-dev \
+    linux-headers \
+    readline-dev \
+    openssl openssl-dev \
+    sqlite-dev \
+    bzip2-dev
+
+RUN sed -i 's/ash/bash/' /etc/passwd
+RUN git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+RUN echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+RUN echo 'export PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"' >> ~/.bashrc
+
+CMD [ "/bin/bash" ]
