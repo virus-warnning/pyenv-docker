@@ -1,6 +1,6 @@
 # pyenv-docker
 
-Alpine build.
+Alpine build. (270MB)
 
 ```
 docker build -f Dockerfile.alpine -t pyenv-alpine:3.12
@@ -10,10 +10,10 @@ docker rm pyenv1
 docker rmi pyenv-alpine:3.12
 ```
 
-Ubuntu build.
+Ubuntu build. (402MB)
 
 ```
-docker build -f Dockerfile.ubuntu -t pyenv-alpine:20.04
+docker build -f Dockerfile.ubuntu -t pyenv-ubuntu:20.04
 docker run --name pyenv2 -it pyenv-ubuntu:20.04
 docker start -i pyenv2
 docker rm pyenv2

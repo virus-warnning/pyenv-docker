@@ -3,24 +3,13 @@ FROM ubuntu:20.04
 RUN sed -i 's/\(archive\|security\).ubuntu.com/free.nchc.org.tw/' /etc/apt/sources.list
 RUN apt update
 
-RUN apt install \
+RUN apt install -y \
     build-essential git wget \
+    libreadline-dev \
+    libsqlite3-dev \
+    libssl-dev \
+    libbz2-dev \
     zlib1g-dev
-
-# RUN apk add \
-#     mandoc man-pages less less-doc \
-#     bash bash-doc bash-completion \
-#     curl curl-doc \
-#     git git-doc \
-#     build-base gcc-doc \
-#     patch \
-#     zlib-dev \
-#     libffi-dev \
-#     linux-headers \
-#     readline-dev \
-#     openssl openssl-dev \
-#     sqlite-dev \
-#     bzip2-dev
 
 # RUN sed -i 's/ash/bash/' /etc/passwd
 RUN git clone https://github.com/pyenv/pyenv.git ~/.pyenv
